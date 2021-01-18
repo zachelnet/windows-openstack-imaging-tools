@@ -1,0 +1,104 @@
+# install4j response file for OpenWebStart 1.3.0
+# Revision: 2020-04-29 - 01
+# Revision: 2020-08-24 - 02
+# Revision: 2020-10-01 - 01
+# Authors: Steffen Rheinhold IT/TSS // Stjepan Baric - ITT/FW
+#
+# Varfile base settings from vendor
+# installationDate$Long=1585737840323
+#
+# #####################
+# Install4j directives:
+# #####################
+sys.adminRights$Boolean=true
+sys.fileAssociation.extensions$StringArray="jnlp","jnlpx"
+sys.fileAssociation.launchers$StringArray="313","313"
+# Default 
+sys.installationDir=C\:\\Program Files\\OpenWebStart
+# sys.languageId=en
+userMode$Integer=1
+#
+# ########################
+# OpenWebStart directives:
+# ########################
+#
+# JVM Manager - Newer JVMs can be downloaded automatically
+ows.jvm.manager.updateStrategy=AUTOMATICALLY_DOWNLOAD
+#ows.jvm.manager.updateStrategy.locked=true
+#
+# JVM Manager - This property must contain a valid URL that defines the
+# server that is used to download new JVMs.
+ows.jvm.manager.server.default=https\://DEACTIVATED
+#ows.jvm.manager.server.default.locked=true
+#
+# JVM Manager - Allow OWS to use the j2se resource from the downloaded JNLP file
+ows.jvm.manager.server.allowFromJnlp=true
+#ows.jvm.manager.server.allowFromJnlp.locked=true
+#
+# JVM Manager - Which locations it is allowed to download JVM resources from:
+#ows.jvm.manager.server.allowFromJnlp.whitelist=*.corpintra.net, *.daimler.com, *.i.daimler.com, *.mercedes-benz.com
+#
+# JVM Manager - Delete unused JVMs from local cache after xx days
+ows.jvm.manager.maxDaysUnusedInJvmCache=999
+ows.jvm.manager.maxDaysUnusedInJvmCache.locked=true
+
+# Proxy Settings - Proxy type 1: Manual Proxy
+#deployment.proxy.type=1
+#
+# Proxy Settings - Manual proxy: Proxy host to use:
+#deployment.proxy.http.host=someserver.domain
+#
+# Proxy Settings - Manual proxy: Proxy port to use:
+#deployment.proxy.http.port=3128
+#
+# Proxy Settings - Manual proxy: Use same proxy for all protocols:
+deployment.proxy.same=true
+#
+# Proxy Settings - Manual proxy: Bypass proxy for localhost:
+deployment.proxy.bypass.local=true
+#
+#
+# Proxy Settings - Proxy type 2: PAC based proxy
+#deployment.proxy.type=2
+#
+# Proxy Settings - Proxy pac URL:
+#deployment.proxy.auto.config.url=http\://someserver.domain\:8899/path/proxy.pac
+#
+#
+# Proxy Settings - Proxy type 4: System proxy
+deployment.proxy.type=4
+
+# Logging: Enable
+#deployment.log=true
+#
+# Logging: Show Java console on startup
+#deployment.console.startup.mode=SHOW
+#
+# Logging: Log data to file(s):
+#deployment.log.file=true
+
+# Security - Assume local files belong to codebase
+deployment.assumeFileSystemInCodebase=true
+#
+# Server Whitelist - Adding the following URLs
+# Adjust to your own needs, uncomment if required.
+#deployment.security.whitelist=*.i.daimler.com, *.daimler.com, *.mercedes-benz.com
+#
+# We don't want OWS to check for and offer updates.
+# Approved updates are announced by Daimler AG. 
+#
+# Updates - Check automatically for updates
+ows.update.activated=false
+ows.update.activated.locked=true
+#
+# Updates - Update strategy for settings
+ows.update.strategy.settings=NEVER
+ows.update.strategy.settings.locked=true
+#
+# Updates - Update strategy for app launches
+ows.update.strategy.launch=NEVER
+ows.update.strategy.launch.locked=true
+#
+# Updates - Check for update now
+ows.checkUpdate=false
+ows.checkUpdate.locked=true
