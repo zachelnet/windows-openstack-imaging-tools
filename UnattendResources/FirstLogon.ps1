@@ -61,11 +61,17 @@ try
     (new-object System.Net.WebClient).DownloadFile('ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/2001320064/AcroRdrDC2001320064_de_DE.exe', "$LocalTempDir\$AdobeReaderInstaller")
     Start-Process -FilePath "$LocalTempDir\$AdobeReaderInstaller" -ArgumentList "/sPB /rs"
 
-    Write-Host "icedtea-web"
+    Write-Host "Setup icedtea-web"
     $LocalTempDir = $env:TEMP
     $icedteaInstaller = "icedtea-web.msi"
     (new-object System.Net.WebClient).DownloadFile('https://github.com/AdoptOpenJDK/IcedTea-Web/releases/download/icedtea-web-1.8.4/icedtea-web-1.8.4.msi', "$LocalTempDir\$icedteaInstaller")
     Start-Process -FilePath "$LocalTempDir\$icedteaInstaller" -ArgumentList "/qn /norestart"
+    
+    Write-Host "Setup OpenWebStart"
+    $arguments2 = "-q"," -varfile"," $resourcesDir\OpenWebStart\OpenWebStart_windows-x64_1_3_0.varfile"
+    & "$resourcesDir\OpenWebStart\OpenWebStart_windows-x64_1_3_0.exe" $arguments2
+
+
     
 
 }
