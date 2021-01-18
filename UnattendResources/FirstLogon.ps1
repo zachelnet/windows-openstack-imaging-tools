@@ -59,7 +59,7 @@ try
 
     $AdobeReaderInstaller = "AcroRdrDC_de_DE.exe"
     (new-object System.Net.WebClient).DownloadFile('ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/2001320064/AcroRdrDC2001320064_de_DE.exe', "$LocalTempDir\$AdobeReaderInstaller")
-    Start-Process -FilePath "$LocalTempDir\$AdobeReaderInstaller" -ArgumentList "/sAll /rs /rps /msi /norestart /quiet EULA_ACCEPT=YES"
+    Start-Process -FilePath "$LocalTempDir\$AdobeReaderInstaller" -ArgumentList "/sPB /rs"
 
     Write-Host "icedtea-web"
     $LocalTempDir = $env:TEMP
