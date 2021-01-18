@@ -72,8 +72,18 @@ try
     & "$resourcesDir\OpenWebStart\OpenWebStart_windows-x64_1_3_0.exe" $arguments2
 
 
-    
+    Write-Host "Setup AI_WEBLAUNCHER64bit"
+    $LocalTempDir = $env:TEMP
+    $AI_WEBLAUNCHER64bit = "AI_WEBLAUNCHER64bit.exe"
+    (new-object System.Net.WebClient).DownloadFile('https://www.bietercockpit.de/res/files/AI_WEBLAUNCHER64bit.exe', "$LocalTempDir\$AI_WEBLAUNCHER64bit")
+    Start-Process -FilePath "$LocalTempDir\$AI_WEBLAUNCHER64bit" -ArgumentList "-q"
 
+
+    Write-Host "Setup Cosinex Bietertool"
+    $LocalTempDir = $env:TEMP
+    $Bietertool_windows = "Bietertool_windows-x86_1_0_10.exe"
+    (new-object System.Net.WebClient).DownloadFile('https://www.bietertool.de/updates/releases/?os=windows-x86', "$LocalTempDir\$Bietertool_windows")
+    Start-Process -FilePath "$LocalTempDir\$Bietertool_windows" -ArgumentList "-q"
 }
 catch
 {
