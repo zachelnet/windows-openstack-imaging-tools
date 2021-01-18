@@ -11,6 +11,7 @@ function getHypervisor() {
     }
 }
 
+
 try
 {
     $hypervisorStr = getHypervisor
@@ -35,6 +36,38 @@ try
             # Nothing to do
         }
     }
+    Write-Host "Setup Office 2019"
+       
+    $arguments1 = "/configure"," $resourcesDir\Office\office.xml"
+    & "$resourcesDir\Office\setupodt.exe" $arguments1
+
+    Write-Host "Setup Chrome"
+
+    $LocalTempDir = $env:TEMP
+    $ChromeInstaller = "ChromeInstaller.exe"
+    (new-object System.Net.WebClient).DownloadFile('http://dl.google.com/chrome/install/375.126/chrome_installer.exe', "$LocalTempDir\$ChromeInstaller")
+    & "$LocalTempDir\$ChromeInstaller" /silent /install; 
+    
+
+    Write-Host "Setup Firefox"
+    
+    $FirefoxInstaller = "firefox.exe"
+    (new-object System.Net.WebClient).DownloadFile('https://download.mozilla.org/?product=firefox-stub&os=win&lang=de', "$LocalTempDir\$FirefoxInstaller")
+    & "$LocalTempDir\$FirefoxInstaller" /s; 
+      
+    Write-Host "Setup Adobe Reader"
+
+    $AdobeReaderInstaller = "AcroRdrDC_de_DE.exe"
+    (new-object System.Net.WebClient).DownloadFile('ftp://ftp.adobe.com/pub/adobe/reader/win/AcrobatDC/2001320064/AcroRdrDC2001320064_de_DE.exe', "$LocalTempDir\$AdobeReaderInstaller")
+    Start-Process -FilePath "$LocalTempDir\$AdobeReaderInstaller" -ArgumentList "/sAll /rs /rps /msi /norestart /quiet EULA_ACCEPT=YES"
+
+    Write-Host "icedtea-web"
+    $LocalTempDir = $env:TEMP
+    $icedteaInstaller = "icedtea-web.msi"
+    (new-object System.Net.WebClient).DownloadFile('https://github.com/AdoptOpenJDK/IcedTea-Web/releases/download/icedtea-web-1.8.4/icedtea-web-1.8.4.msi', "$LocalTempDir\$icedteaInstaller")
+    Start-Process -FilePath "$LocalTempDir\$icedteaInstaller" -ArgumentList "/qn /norestart"
+    
+
 }
 catch
 {
